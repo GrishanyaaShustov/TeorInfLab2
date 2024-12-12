@@ -5,10 +5,6 @@ int S(int& x) {
     return x = x + 1;
 }
 
-int &GetThird(int a, int b, int c) {
-    return c;
-}
-
 int Add(int x, int y, int t = 0) {
     if (t == y) {
         return x;
