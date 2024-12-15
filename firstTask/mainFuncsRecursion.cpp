@@ -1,4 +1,3 @@
-
 #include <iostream>
 
 int S(int& x) {
@@ -9,7 +8,6 @@ int Add(int x, int y, int t = 0) {
     if (t == y) {
         return x;
     }
-
     return Add(S(x), y, S(t));
 }
 
@@ -20,21 +18,26 @@ int Mult(int x, int y, int t = 0) {
     return Add(x, Mult(x, y, S(t)));
 }
 
-int Pow(int x, int y, int t = 0) {
+int Power(int x, int y, int t = 0) {
     if (t == y) {
         return 1;
     }
-    return Mult(x, Pow(x, y, S(t)));
+    return Mult(x, Power(x, y, S(t)));
 }
 
 int main() {
+    int x, y;
+    std::cout << "Введите значения x и y: ";
+    std::cin >> x >> y;
 
-    int x = 10;
-    int y = 4;
+    if (x < 0 || y < 0) {
+        std::cout << "Ошибка: m и n должны быть неотрицательными." << std::endl;
+        return 1;
+    }
 
-    std::cout << "Сложение " << x << " и " << y << " составляет: " << Add(x, y) << std::endl;
-    std::cout << "Произведение " << x << " и " << y << " составляет: " << Mult(x, y) << std::endl;
-    std::cout << x << " в степени " << y << " составляет: " << Pow(x, y) << std::endl;
+    std::cout << "Результат сложения чисел" << x << "и " << y <<" = " << Add(x, y) << std::endl;
+    std::cout << "Результат умножения чисел" << x << "и " << y <<" = " << Mult(x, y) << std::endl;
+    std::cout << "Результат возведения " << x << "в степень " << y <<" = " << Power(x, y) << std::endl;
 
     return 0;
 }
