@@ -1,8 +1,11 @@
 #include <iostream>
 
 int fibonacci(int n) {
-    if (n <= 1) {
-        return n;
+    if(n == 0) {
+        return 0;
+    }
+    else if(n == 1) {
+        return 1;
     }
 
     int prev1 = 0, prev2 = 1, current = 0;
