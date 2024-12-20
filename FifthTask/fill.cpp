@@ -2,13 +2,14 @@
 #include <vector>
 
 using namespace std;
-
+int functionCalls = 0;
 // Функция закраски
 void fill(vector<vector<int>>& matrix, int x, int y) {
+    functionCalls++;
     int rows = matrix.size();
     int cols = matrix[0].size();
 
-    
+
     if (x < 0 || y < 0 || x >= cols || y >= rows || matrix[y][x] != 0) {
         return;
     }
@@ -89,6 +90,9 @@ int main() {
         cout << endl;
     }
 
+    cout << "\nСколько вызовов потребовалось для матрицы A: " << functionCalls << endl;
+    functionCalls = 0;
+
     cout << "Матрица Б до закраски:" << endl;
     for (const auto& row : matrixB) {
         for (int cell : row) {
@@ -107,6 +111,9 @@ int main() {
         }
         cout << endl;
     }
+
+    cout << "\nСколько вызовов потребовалось для матрицы Б: " << functionCalls << endl;
+    functionCalls = 0;
 
     return 0;
 }
